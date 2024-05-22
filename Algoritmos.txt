@@ -1,0 +1,29 @@
+Paso 1 => En caso de :
+ 
+	Usuario quiere votar : 
+		Conectarse al servidor mediante una clave (sala) que indique el usuario, conectarse con el nombre que ingreso el usuario  (Sanitisacion de nombre) y si no
+		ingreso nada, conectarse con un nombre generico (Como "PeterVote1334")  
+
+
+	Usuario quiere crear una sala para votar: 
+		Verificar si el cliente esta conectado a una cuenta, luego verificar si la cuenta tiene el spotify premium, si falla en alguna, no puede crear una sala.
+		
+		Si no esta conectado a una cuenta, hacer que se registre el usuario y luego redigir a crear sala.
+
+		Al crear una sala creamos otro socket y esperamos eventos de las personas, guardamos todo lo que suceda en la base de datos (Todavia sin especificar)
+
+
+	Usuario quiere logearse:
+		Verificar si el usuario con ese nombre y contrasenia existe, si no fallido
+
+	
+	Usuario quiere registrarse:
+		Mediante la API de spotify, consiguiendo asi su token, guardar los datos en la base de datos correspondiente (tabla Usuarios) con su : NickName, tokenSpotify, contrasenia.
+		Verificar si la token o el nombre de usuario existe.
+
+	
+Paso 2 (El usuario ya esta en la sala) =>
+
+	
+
+	
