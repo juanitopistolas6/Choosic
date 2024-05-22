@@ -1,0 +1,57 @@
+La probabilidad es una medida numerica de la posibilidad de que un evento ocurra. Por tanto se utiliza como una medida del grado de incertidumbre asociado en cada uno de los cuatro eventos previamente listados. Si las probabilidades estan disponibles se puede determinar la posibilidad de ocurrencia de cada evento. Los valores de probabilidad siempre se asignan en una escala de 0 a 1. una probabilidad se cercana a cero indica que es poco probable que un evento ocurra, una probabilidad cercana al 1 indica que es casi seguro que un evento se produzca. Otras probabilidades entre cero y uno representan grados de posibilidad de que un evento ocurra por ejemplo: Si se considera el evento lluvia para mañana se entiende que cuando el informe del clima indica una probabilidad de lluvia casi nula significa que la probalbilidad de lluvia es baja, sin embargo si una probabilidad de .90 de que llueva es probable que llueva una medida del .50 indica que la probabilidad de que llueva es igual a la que no lleva. 
+
+
+Experimento: 
+
+Reglas de conteo 
+
+Asignacion de probabilidades 
+
+En el estudio de la probabilidad un experimento se define como un proceso que genera resultados bien definidos en cada repeticion ocurre uno y solo uno de los resultados posibles del experimeto
+
+Experimiento 				-				Resultado de experimento 
+
+Lanzar una moneda				|	Cara o cruz
+------------------------------------------------------------------------------------------------------
+Seleccionar una parte para inspeccionarla 	|	Sirve o no sirve
+------------------------------------------------------------------------------------------------------
+HAcer una llamada de ventas 			|	Vender o no vender
+------------------------------------------------------------------------------------------------------
+Arrojar un dado					|	Que salgan alguna de sus 6 caras
+------------------------------------------------------------------------------------------------------
+Jugar un partido de futbol			|	Ganar o perder
+
+
+Experimento muestral
+
+Es el cunjunto de todos los resultados del experimento. Cuando se especifica todos los resultados posibles del experimento el espacio muestral de este queda definido y de detonan con la letra "S".
+
+S = (cara o cruz)
+S = (1,2,3,4,5 o 6)
+
+
+Reglas de conteo, conbinaciones y premutaciones 
+
+La identificacion y el conteo de los resultados del experimento es un paso necesario en la asigancion de probabilidades ahora se estudiaran tres reglas de conteo utiles 
+
+Experimento de pasos multiples: La primer regla de conteo se aplica a los experimentos de pasos multiples. Considere un experimento que consiste en lanzar dos monedas. Los resultados se definen en funcion del patron de caras y cruces que muestra la cara superior de la moneda, cuantos resultados son posibles para la este experimento.
+
+El ejemplo de lanzar dos monedas se considera un experimento de dos pasos en el cual el paso uno de lanzamiento es a lanzar la primer moneda y el segundo a lanzar la segunda moneda Por tanto hay cuatro resultados experimentales posibles en este caso es facil listarlos a todos. La regla de conteo para experimentos de pasos multiples permite determinar el numero de resultados del experimento sin listarlos. 
+
+Si un experimento se describe como una secuencia de K pasos con "n1" contiene resultados posibles en el primer paso "n2" resultados posibles en el segundo paso, y asi sucesivamente el numero total de resultados del experimento dado por ("n1")("n2")...("nx").
+
+Si se considera el experimeto de lanzamiento de dos monedas con la secuencia de lanzar primero una moneda ("n1" = 2) ("n2" = 2) al aplicar la regla de conteo puede erse que 2 x 2 = 4 por lo que hay cuatro resultados experimentales posibles
+
+Paso 2
+Combinanciones: Una segunda regla de conteo util permite contar el numero de resultados cuando el experimento consiste en la seleccion de "n" objetos de un conjunto (generalmente mayor) de "N" objetos. Esta se conoce como regla de conteo para combinaciones. 
+
+El numero de combinaciones de "N" objeto tomados "n" a la vez es: 
+
+
+La notacion ! signigica factorial, por ejemplo "5 factorial" es : 5!
+
+
+
+
+
+
