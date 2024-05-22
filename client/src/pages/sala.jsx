@@ -26,6 +26,10 @@ export default function Room () {
       console.log('conectado', userId)
     })
 
+    socket.on('songAdded', (data) => {
+      updatePlaylist(data.curretPlaylist)
+    })
+
     socket.on('resultados-busqueda', (data) => {
       console.log('Search trachs', searchTracks)
       const tracks = data.tracks.items.map(track => ({
@@ -54,23 +58,26 @@ export default function Room () {
   }, [])
 
   useEffect(() => {
-    async function obtainSongs () {
-      try {
-        const response = await fetch(`${url}/songsByCode/${codigoSala}`)
-
-        if (response.ok) {
-          const data = await response.json()
-          updatePlaylist(data)
-        } else {
-          console.error('Error al agregar la canción')
-        }
-      } catch (e) {
-        console.log(e)
-      }
-    }
-
     obtainSongs()
   }, [])
+
+  async function obtainSongs () {
+    try {
+      const response = await fetch(`${url}/songsByCode/${codigoSala}`)
+
+      if (response.ok) {
+        const data = await response.json()
+        updatePlaylist(data)
+      } else {
+        console.error('Error al agregar la canción')
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  obtainSongs()
+  
 
   return (
 		<div className='bg-gradient-to-r from-emerald-950 to-green-700'>

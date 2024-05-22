@@ -31,7 +31,7 @@ export default function InputRoom() {
                         </div>
                         <div className="mt-4">
                             <button
-
+                                onClick={handleRoomInput}
                                 className="bg-amber-900 hover:bg-amber-950 duration-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             >
                                 OK

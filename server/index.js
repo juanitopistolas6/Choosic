@@ -41,10 +41,11 @@ io.on('connection', socket => {
 
   })
 
-  socket.on('songAdded', ( { roomID, cancion }) => {
+  socket.on('songAdded', ( { roomID, curretPlaylist }) => {
     console.log(cancion)
-    io.to(roomID).emit('updatePlaylist', { cancion })
+    io.to(roomID).emit('updatePlaylist', { curretPlaylist })
   })
+
 
   socket.on('searchSong',async(data) => {
     console.log(data)
