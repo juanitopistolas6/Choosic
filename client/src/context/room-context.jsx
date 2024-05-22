@@ -12,10 +12,6 @@ export const RoomContextProvider = ({ children }) => {
     console.log('CURRENT_SONG:', currentSong)
   }, [playlist, currentSong])
 
-  useEffect(() => {
-
-  }, [])
-
   const updatePlaylist = (object) => {
     const newPlaylist = []
 
