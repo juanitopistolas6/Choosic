@@ -12,21 +12,28 @@ const Song = ({ imagen, artistas, duracion, nombre, votos, id, sala_id }) => {
   const [isVoted, setIsVoted] = useState(null)
 
   useEffect(() => {
-    async function checkVote () {
-      const response = await fetch(`${url}/isVoted/${sala_id}/${id}/${userData.userId}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+		console.log('asdadawd1')
+    checkVote()
+  }, [])
 
-      if (response.ok) {
-        const data = await response.json()
-        setIsVoted(data.isVoted)
-      }
-    }
+  useEffect(() => {
     checkVote()
   }, [playlist])
+
+  async function checkVote () {
+    const response = await fetch(`${url}/isVoted/${sala_id}/${id}/${userData.userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+			console.log(data)
+      setIsVoted(data.isVoted)
+    }
+  }
 
   console.log(isVoted)
 
