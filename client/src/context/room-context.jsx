@@ -6,6 +6,7 @@ export const roomContext = createContext()
 export const RoomContextProvider = ({ children }) => {
   const [playlist, setPlaylist] = useState([])
   const [currentSong, setCurrentSong] = useState(null)
+  const url = 'http://localhost:3003/api'
 
   useEffect(() => {
     console.log('PLAYLIST:', playlist)
@@ -23,11 +24,11 @@ export const RoomContextProvider = ({ children }) => {
       }
     })
 
-    setPlaylist(prev => [...prev, ...newPlaylist])
+    setPlaylist(prev => [...newPlaylist])
   }
 
   return (
-    <roomContext.Provider value={{ playlist, currentSong, updatePlaylist }}>
+    <roomContext.Provider value={{ playlist, currentSong, updatePlaylist, url }}>
       {children}
     </roomContext.Provider>
   )

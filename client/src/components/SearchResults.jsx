@@ -5,14 +5,13 @@ import { roomContext } from '../context/room-context'
 
 /* eslint-disable react/prop-types */
 const SearchResult = (props) => {
-  const { updatePlaylist } = useContext(roomContext)
+  const { updatePlaylist, url } = useContext(roomContext)
 
   const handleSongInput = async () => {
     props.setSearchTracks([])
-    const url = 'http://localhost:3003/api/agregar/cancion'
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`${url}/agregar/cancion`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -14,11 +14,14 @@ import { ReproduciendoAhora } from '../components/currentSong'
 export default function Room () {
   const { codigoSala } = useParams()
   const { userData } = useContext(ContextoUsuario)
-  const { playlist, currentSong } = useContext(roomContext)
+  const { playlist, currentSong, url, updatePlaylist } = useContext(roomContext)
   const [searchTracks, setSearchTracks] = useState({})
-  const socket = io('http://localhost:3003')
+  const [socket, setSocket] = useState(null)
 
   useEffect(() => {
+    const socket = io('http://localhost:3003')
+    setSocket(socket)
+
     socket.on('user-joined', (userId) => {
       console.log('conectado', userId)
     })
@@ -48,6 +51,25 @@ export default function Room () {
     return () => {
       socket.disconnect()
     }
+  }, [])
+
+  useEffect(() => {
+    async function obtainSongs () {
+      try {
+        const response = await fetch(`${url}/songsByCode/${codigoSala}`)
+
+        if (response.ok) {
+          const data = await response.json()
+          updatePlaylist(data)
+        } else {
+          console.error('Error al agregar la canción')
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+
+    obtainSongs()
   }, [])
 
   return (
