@@ -29,7 +29,7 @@ const SearchResult = (props) => {
       if (response.ok) {
         const data = await response.json()
         console.log(data)
-        props.socket.emit('searchSong',{curretPlaylist: data})
+        props.socket.emit('searchSong', { curretPlaylist: data })
         updatePlaylist(data)
       } else {
         console.error('Error al agregar la canción')

@@ -5,7 +5,7 @@ import { Server as SocketServer } from 'socket.io'
 import cors from 'cors'
 
 import querystring from 'querystring';
-import { createRoom, joinRoom, getRoomByName, putSongOnRoom, getSongsByCode } from './controllers/roomController.js'
+import { createRoom, joinRoom, getRoomByName, putSongOnRoom, getSongsByCode, voteSong, isVoted, cancelVote } from './controllers/roomController.js'
 import { createUser, getUserById, getUserByName} from './controllers/userControllers.js';
 import { callbackSpotify, searchSongs } from './controllers/spotifyControllers.js'
 
@@ -71,10 +71,12 @@ app.get('/api/users/:id/:password', getUserById)
 app.get('/api/name/:userName', getUserByName)
 app.get('/api/room/:roomCode', getRoomByName)
 app.get('/api/songsByCode/:roomCode', getSongsByCode)
+app.get('/api/isVoted/:usuario/:salaID/:cancion', isVoted)
 app.post('/api/register', createUser)
 app.post('/api/createRoom', createRoom)
 app.post('/api/agregar/cancion', putSongOnRoom)
-
+app.post('/api/votar', voteSong)
+app.post('/api/cancelarVoto', cancelVote)
 
 
 

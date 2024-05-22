@@ -5,8 +5,8 @@ import mysql from 'mysql2/promise';
 const connection = await mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '12345',
-  database: 'choosic'
+  password: '6442340710juan1',
+  database: 'choosic',
 });
 
 function generateRoomCode() {
@@ -70,7 +70,7 @@ export async function putSongOnRoom(req, res) {
       const [rows] = await connection.execute('CALL agregar_cancion(?, ?, ?, ?, ?, ?)', [
           roomCode, nombre, uri, artista, imagen, duracion
       ]);
-      
+
       res.json(rows[0])
   } catch (error) {
       console.error('Error al agregar la canción:', error);
@@ -90,4 +90,57 @@ export async function getSongsByCode(req, res) {
     res.status(500).json({ message: 'Error al obtener las canciones' });
   }
 } 
+
+export async function voteSong (req, res) {
+  const { usuario, sala, cancion } = req.body
+
+  try {
+    const [rows] = await connection.query('CALL votar_cancion(?, ?, ?)', [sala, cancion, usuario])
+
+    res.json(rows[0])
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export async function isVoted (req, res) {
+  const { salaID, cancion, usuario } = req.params
+
+  try {
+    const [rows] = await connection.query('SELECT is_voted(?, ?, ?) as isVoted', [usuario, salaID, cancion])
+
+    if (rows.length > 0) {
+      const isVoted = rows[0].isVoted;
+      res.status(200).json({ isVoted });
+    } else {
+      res.status(404).json({ error: 'No se encontró información sobre el voto' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al verificar el voto' });
+  }
+}
+
+export async function cancelVote (req, res) {
+  const { sala, cancion, usuario } = req.body
+  console.log('body', req.body)
+
+  try {
+    // Llamada al procedimiento almacenado
+    const [rows] = await connection.query('CALL cancelar_voto(?, ?, ?)', [sala, cancion, usuario])
+
+    // Imprimir los resultados obtenidos
+    console.log('Resultados de la consulta:', rows);
+
+    // Verificar si se obtuvieron resultados
+    if (rows && rows[0].length > 0) {
+      res.status(200).json(rows[0]); // Devolver las canciones de la sala
+    } else {
+      res.status(404).json({ error: 'No se encontró información sobre el voto' });
+    }
+  } catch (e) {
+    console.error('Error al ejecutar la consulta:', e);
+    res.status(500).json({ error: 'Error al cancelar el voto' });
+  }
+}
 

@@ -4,7 +4,7 @@ import { getTokenByRoom } from './userControllers.js';
 const connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '12345',
+    password: '6442340710juan1',
     database: 'choosic'
 });
 
